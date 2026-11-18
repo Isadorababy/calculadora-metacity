@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <!-- PAINEL PRINCIPAL DA CALCULADORA (OCULTO POR PADRÃO ATÉ LOGIN) -->
+    <!-- PAINEL PRINCIPAL DA CALCULADORA -->
     <div id="main-content" class="container mx-auto px-4 py-8 max-w-7xl hidden">
         <!-- Cabeçalho -->
         <header class="flex flex-col md:flex-row justify-between items-center mb-8 border-b border-[#313244] pb-6 gap-4">
@@ -69,22 +69,20 @@
                 </div>
             </div>
             
-            <!-- Honorários Configuração (Apenas o campo 'Adicional' e os seletores permitidos são interativos) -->
+            <!-- Honorários Configuração -->
             <div class="flex flex-col sm:flex-row items-center gap-4 bg-[#1e1e2e] p-3 rounded-xl border border-[#313244] w-full md:w-auto">
                 <div class="flex flex-col items-start gap-1 w-full sm:w-auto">
                     <div class="flex items-center gap-2">
                         <span class="text-xs font-bold text-[#f38ba8] tracking-wider uppercase whitespace-nowrap">Honorário Fixo:</span>
-                        <span id="label-honorario-fixo" class="text-base font-black text-[#a6e3a1] select-none">R\$ 150.000</span>
+                        <span id="label-honorario-fixo" class="text-base font-black text-[#a6e3a1] select-none">R$ 150.000</span>
                     </div>
-                    <!-- Caixa de marcação realocada para baixo do texto de Honorário Fixo -->
                     <label class="flex items-center gap-1.5 text-[11px] text-[#a6adc8] cursor-pointer bg-[#11111b] px-2 py-0.5 rounded border border-[#313244] hover:border-[#45475a] transition-colors w-full sm:w-auto justify-center sm:justify-start">
                         <input type="checkbox" id="chk-honorario-reduzido" class="accent-[#a6e3a1] h-3.5 w-3.5 cursor-pointer">
-                        <span class="select-none">Fixar em R\$ 50 mil</span>
+                        <span class="select-none">Fixar em R$ 50 mil</span>
                     </label>
                 </div>
                 <div class="w-full sm:w-auto flex items-center gap-2 border-t sm:border-t-0 sm:border-l border-[#313244] pt-2 sm:pt-0 sm:pl-3 self-center">
                     <span class="text-xs font-bold text-[#cba6f7] tracking-wider uppercase whitespace-nowrap">Adicional:</span>
-                    <!-- Campo aberto para inserção de valores adicionais -->
                     <input type="number" id="input-honorario-adicional" value="0" min="0" step="1000"
                         class="bg-[#11111b] border border-[#313244] px-2 py-1 rounded text-sm focus:outline-none focus:border-[#cba6f7] transition-colors w-full sm:w-28 text-[#a6e3a1] font-bold">
                 </div>
@@ -94,7 +92,7 @@
         <!-- Grade Principal -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- Coluna da Esquerda: Lista de Crimes (Seleção de Artigos) -->
+            <!-- Coluna da Esquerda: Lista de Crimes -->
             <div class="lg:col-span-7 flex flex-col gap-4">
                 <div class="bg-[#1e1e2e] p-4 rounded-xl border border-[#313244] flex flex-col md:flex-row md:items-center justify-between gap-3">
                     <h2 class="text-lg font-bold text-[#cba6f7] flex items-center gap-2 select-none">
@@ -110,7 +108,7 @@
                 </div>
             </div>
 
-            <!-- Coluna da Direita: Resumo da Sentença e Resultados Finais Protegidos -->
+            <!-- Coluna da Direita: Resumo da Sentença e Resultados -->
             <div class="lg:col-span-5 flex flex-col gap-6">
                 
                 <!-- Card de Resultados Finais -->
@@ -121,7 +119,7 @@
                         <span>⚖️</span> Resumo Judicial
                     </h2>
 
-                    <!-- Métricas Rápidas (Exibição protegida) -->
+                    <!-- Métricas Rápidas -->
                     <div class="grid grid-cols-2 gap-3 select-none">
                         <div class="bg-[#11111b] p-3 rounded-xl border border-[#313244] text-center">
                             <span class="text-xs text-[#a6adc8] block mb-1">Total de Crimes</span>
@@ -152,21 +150,21 @@
                         <!-- Atenuantes -->
                         <div class="flex flex-col gap-2">
                             <div class="flex justify-between items-center select-none">
-                                <span class="text-[10px] font-bold text-[#a6e3a1] uppercase tracking-wider">Atenuantes (-20% cada)</span>
+                                <span class="text-[10px] font-bold text-[#a6e3a1] uppercase tracking-wider">Atenuantes (Dinâmicas)</span>
                                 <span id="label-total-atenuantes" class="text-xs font-bold text-[#a6e3a1]">-0%</span>
                             </div>
                             <div class="grid grid-cols-2 gap-2 text-xs">
                                 <label class="flex items-center gap-2 text-[#a6adc8] cursor-pointer select-none">
-                                    <input type="checkbox" id="atenuante-primario" class="accent-[#a6e3a1] h-3.5 w-3.5"> Réu Primário
+                                    <input type="checkbox" id="atenuante-primario" class="accent-[#a6e3a1] h-3.5 w-3.5"> Réu Primário (-20%)
                                 </label>
                                 <label class="flex items-center gap-2 text-[#a6adc8] cursor-pointer select-none">
-                                    <input type="checkbox" id="atenuante-colaboracao" class="accent-[#a6e3a1] h-3.5 w-3.5"> Colaboração
+                                    <input type="checkbox" id="atenuante-colaboracao" class="accent-[#a6e3a1] h-3.5 w-3.5"> Colaboração (-10%)
                                 </label>
                                 <label class="flex items-center gap-2 text-[#a6adc8] cursor-pointer select-none">
-                                    <input type="checkbox" id="atenuante-confissao" class="accent-[#a6e3a1] h-3.5 w-3.5"> Confissão
+                                    <input type="checkbox" id="atenuante-confissao" class="accent-[#a6e3a1] h-3.5 w-3.5"> Confissão (-15%)
                                 </label>
                                 <label class="flex items-center gap-2 text-[#a6adc8] cursor-pointer select-none">
-                                    <input type="checkbox" id="atenuante-advogado" class="accent-[#a6e3a1] h-3.5 w-3.5"> Advogado Presente
+                                    <input type="checkbox" id="atenuante-advogado" class="accent-[#a6e3a1] h-3.5 w-3.5"> Advogado (-30%)
                                 </label>
                             </div>
                         </div>
@@ -176,7 +174,7 @@
                         <!-- Agravantes -->
                         <div class="flex flex-col gap-2">
                             <div class="flex justify-between items-center select-none">
-                                <span class="text-[10px] font-bold text-[#f38ba8] uppercase tracking-wider">Agravantes (+% na pena)</span>
+                                <span class="text-[10px] font-bold text-[#f38ba8] uppercase tracking-wider">Agravantes (Dinâmicas)</span>
                                 <span id="label-total-agravantes" class="text-xs font-bold text-[#f38ba8]">+0%</span>
                             </div>
                             <div class="grid grid-cols-2 gap-2 text-xs">
@@ -184,10 +182,10 @@
                                     <input type="checkbox" id="agravante-mascara" class="accent-[#f38ba8] h-3.5 w-3.5"> Máscara (+10%)
                                 </label>
                                 <label class="flex items-center gap-2 text-[#a6adc8] cursor-pointer select-none">
-                                    <input type="checkbox" id="agravante-grupo" class="accent-[#f38ba8] h-3.5 w-3.5"> Grupo 2+ (+10%)
+                                    <input type="checkbox" id="agravante-grupo" class="accent-[#f38ba8] h-3.5 w-3.5"> Grupo 2+ (+5%)
                                 </label>
                                 <label class="flex items-center gap-2 text-[#a6adc8] cursor-pointer select-none">
-                                    <input type="checkbox" id="agravante-reincidencia" class="accent-[#f38ba8] h-3.5 w-3.5"> Reincidência (+10%)
+                                    <input type="checkbox" id="agravante-reincidencia" class="accent-[#f38ba8] h-3.5 w-3.5"> Reincidência (+15%)
                                 </label>
                                 <label class="flex items-center gap-2 text-[#a6adc8] cursor-pointer select-none">
                                     <input type="checkbox" id="agravante-refem" class="accent-[#f38ba8] h-3.5 w-3.5"> Uso de Refém (+20%)
@@ -200,23 +198,23 @@
                     <div class="bg-[#11111b] p-5 rounded-xl border border-[#313244] flex flex-col gap-4 select-none">
                         <div class="flex justify-between items-center text-sm text-[#a6adc8]">
                             <span>Soma das Fianças (Crimes Fiançáveis):</span>
-                            <span id="calc-subtotal-fianca" class="font-semibold text-white">R\$ 0</span>
+                            <span id="calc-subtotal-fianca" class="font-semibold text-white">R$ 0</span>
                         </div>
                         <div class="flex justify-between items-center text-sm text-[#a6adc8]">
                             <span>Honorários do Advogado (Fixo + Adicional):</span>
-                            <span id="calc-advogado" class="font-semibold text-[#cba6f7]">R\$ 0</span>
+                            <span id="calc-advogado" class="font-semibold text-[#cba6f7]">R$ 0</span>
                         </div>
                         <div class="flex justify-between items-center text-sm text-[#a6adc8]">
                             <span>Valor Total de Multas Acumuladas:</span>
-                            <span id="calc-multa-total" class="font-semibold text-[#fab387]">R\$ 0</span>
+                            <span id="calc-multa-total" class="font-semibold text-[#fab387]">R$ 0</span>
                         </div>
                         <hr class="border-[#313244]">
                         <div class="flex justify-between items-center">
                             <div>
-                                <span class="text-base font-black text-white block">Fiança:</span>
+                                <span class="text-base font-black text-white block">Fiança Geral:</span>
                                 <span class="text-xs text-[#585b70]">(Fianças acumuladas + Honorário)</span>
                             </div>
-                            <span id="calc-total-geral" class="text-2xl font-black text-[#a6e3a1]">R\$ 0</span>
+                            <span id="calc-total-geral" class="text-2xl font-black text-[#a6e3a1]">R$ 0</span>
                         </div>
                     </div>
 
@@ -248,9 +246,8 @@
         </div>
     </div>
 
-    <!-- Script Protegido com Controle de Autenticação Embutido -->
+    <!-- Script com Banco de Dados Atualizado e Modificadores Proporcionais -->
     <script>
-        // Sistema de autenticação privado
         const loginScreen = document.getElementById('login-screen');
         const mainContent = document.getElementById('main-content');
         const inputPassword = document.getElementById('input-password');
@@ -261,7 +258,7 @@
             if (inputPassword.value === 'meta26') {
                 loginScreen.classList.add('hidden');
                 mainContent.classList.remove('hidden');
-                renderCrimes(); // Inicializa renderização dos artigos com segurança
+                renderCrimes();
             } else {
                 loginErrorMsg.classList.remove('hidden');
                 inputPassword.value = '';
@@ -269,117 +266,111 @@
             }
         }
 
-        // Eventos do login
         btnLogin.onclick = checkAuthentication;
         inputPassword.onkeydown = (e) => {
             if (e.key === 'Enter') checkAuthentication();
         };
 
-        // Banco de dados sequencial por número do Artigo (art)
+        // BANCO DE DADOS SINALIZADO DIRETAMENTE DO NOVO ARQUIVO XLSX
         const database = [
-            { art: 1, desc: "HOMICÍDIO SIMPLES", pena: 100, multa: 90000, fianca: "⛔" },
-            { art: 2, desc: "HOMICÍDIO QUALIFICADO", pena: 150, multa: 120000, fianca: "PERDÃO JUDICIAL" },
-            { art: 3, desc: "LATROCÍNIO", pena: 150, multa: 150000, fianca: "⛔" },
-            { art: 4, desc: "HOMICÍDIO CULPOSO", pena: 75, multa: 60000, fianca: "⛔" },
-            { art: 5, desc: "TENTATIVA DE HOMICÍDIO", pena: 50, multa: 30000, fianca: "⛔" },
-            { art: 6, desc: "AMEAÇAR ALGUÉM", pena: 50, multa: 60000, fianca: "⛔" },
-            { art: 7, desc: "SEQUESTRO / CARCERE PRIVADO", pena: 50, multa: 90000, fianca: "⛔" },
-            { art: 8, desc: "TORTURA", pena: 100, multa: 120000, fianca: "PERDÃO JUDICIAL" },
-            { art: 9, desc: "TERRORISMO", pena: 150, multa: 120000, fianca: "⛔" },
-            { art: 10, desc: "TRÁFICO POSSE ÓRGÃOS", pena: 150, multa: 120000, fianca: "PERDÃO JUDICIAL" },
-            { art: 11, desc: "SUICÍDIO (INDUZIMENTO, INSTIGAMENTO E AUXÍLIO)", pena: 150, multa: 60000, fianca: "PERDÃO JUDICIAL" },
-            { art: 12, desc: "PERICITAÇÃO DA VIDA OU DA SAÚDE", pena: 50, multa: 120000, fianca: "⛔" },
-            { art: 13, desc: "CRIME CONTRA O SEGREDO", pena: 150, multa: 120000, fianca: "⛔" },
-            { art: 14, desc: "ATO OBSCENO / ATENTADO AO PUDOR", pena: 100, multa: 120000, fianca: 120000 },
-            { art: 15, desc: "DIRIGIR EM ALTA VELOCIDADE", pena: 20, multa: 50000, fianca: 50000 },
-            { art: 16, desc: "PILOTAR SEM CAPACETE", pena: 15, multa: 75000, fianca: 75000 },
-            { art: 17, desc: "DIRIGIR EM LOCAL IMPRUDENTE OU CONTRAMÃO", pena: 20, multa: 35000, fianca: 35000 },
-            { art: 18, desc: "ESTESTACIONAR EM LOCAL PROIBIDO", pena: 10, multa: 50000, fianca: 50000 },
-            { art: 19, desc: "UTILIZAR VEÍCULO PUBLICO PARA COMETER CRIMES", pena: 45, multa: 80000, fianca: "⛔" },
-            { art: 20, desc: "TRAFEGAR COM INDIVÍDUOS NO PORTA-MALAS", pena: 0, multa: 45000, fianca: "⛔" },
-            { art: 21, desc: "DIRIGIR SOB EFEITO", pena: 30, multa: 80000, fianca: 80000 },
-            { art: 22, desc: "ADULTERAÇÃO DE SINAL IDENTIFICADOR DE VEÍCULOS", pena: 35, multa: 85000, fianca: "⛔" },
-            { art: 23, desc: "LESÃO CORPORAL", pena: 50, multa: 30000, fianca: 30000 },
-            { art: 24, desc: "LESÃO CORPORAL GRAVE", pena: 70, multa: 60000, fianca: "⛔" },
-            { art: 25, desc: "LESÃO CORPORAL SEGUIDA DE MORTE", pena: 100, multa: 76000, fianca: "⛔" },
-            { art: 26, desc: "CALÚNIA", pena: 50, multa: 60000, fianca: 60000 },
-            { art: 27, desc: "INJÚRIA", pena: 50, multa: 60000, fianca: 60000 },
-            { art: 28, desc: "DIFAMAÇÃO", pena: 50, multa: 60000, fianca: 60000 },
-            { art: 29, desc: "CRIME CONTRA A LIBERDADE INDIVIDUAL", pena: 100, multa: 120000, fianca: 120000 },
-            { art: 30, desc: "CRIME CONTRA A INVIOLABILIDADE DO DOMICÍLIO", pena: 50, multa: 60000, fianca: 60000 },
-            { art: 31, desc: "OCULTAÇÃO DA FACE", pena: 0, multa: 20000, fianca: "⛔" },
-            { art: 32, desc: "FALSA COMUNICAÇÃO DE CRIME", pena: 30, multa: 90000, fianca: 90000 },
-            { art: 33, desc: "DESACATO", pena: 75, multa: 60000, fianca: "⛔" },
-            { art: 34, desc: "RESISTÊNCIA A PRISÃO", pena: 75, multa: 60000, fianca: "⛔" },
-            { art: 35, desc: "PERTUBAÇÃO DO SOSSEGO", pena: 0, multa: 60000, fianca: "⛔" },
-            { art: 36, desc: "DIREÇÃO PERIGOSA", pena: 50, multa: 45000, fianca: 45000 },
-            { art: 37, desc: "DESOBEDIÊNCIA A ORDEM POLICIAL", pena: 30, multa: 33760, fianca: 33760 },
-            { art: 38, desc: "APOLOGIA AO CRIME", pena: 60, multa: 24800, fianca: "⛔" },
-            { art: 39, desc: "TENTATIVA DE FUGA", pena: 50, multa: 18400, fianca: 18400 },
-            { art: 40, desc: "OMISSÃO DE SOCORRO", pena: 30, multa: 30000, fianca: 30000 },
-            { art: 41, desc: "EXPOSIÇÃO DE ARMA DE FOGO", pena: 50, multa: 120000, fianca: 120000 },
-            { art: 42, desc: "USO ILEGAL DE VESTIMENTA OU ACESSÓRIOS MILITARES", pena: 50, multa: 40000, fianca: 40000 },
-            { art: 43, desc: "EXERCÍCIO ILEGAL DA PROFISSÃO OU ATIVIDADE", pena: 50, multa: 90000, fianca: 90000 },
-            { art: 44, desc: "CUMPLICE", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 45, desc: "ASSOCIAÇÃO CRIMINOSA (3 OU 4 PESSOAS)", pena: 30, multa: 40000, fianca: "⛔" },
-            { art: 46, desc: "FALSIFICAÇÃO DE DOCUMENTO PÚBLICO", pena: 75, multa: 90000, fianca: 90000 },
-            { art: 47, desc: "DAR FUGA A PRESO", pena: 75, multa: 60000, fianca: "⛔" },
-            { art: 48, desc: "CONTRAVENÇÃO PENAL", pena: 50, multa: 90000, fianca: 90000 },
-            { art: 49, desc: "CORRIDA ILEGAL", pena: 50, multa: 90000, fianca: 90000 },
-            { art: 50, desc: "ORGANIZAÇÃO CRIMINOSA", pena: 50, multa: 90000, fianca: 90000 },
-            { art: 51, desc: "POSSE DE ALGEMA (+3)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 52, desc: "NÃO RESPONDER OU COMPARECER A INTIMAÇÃO JUDICIAL", pena: 0, multa: 1600000, fianca: "⛔" },
-            { art: 53, desc: "PREVARICAÇÃO / OMISSÃO DE COMUNICAÇÃO DE CRIME", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 54, desc: "RECUSA DE DADOS SOBRE A PRÓPRIA IDENTIDADE", pena: 0, multa: 60000, fianca: "⛔" },
-            { art: 55, desc: "CORRUPÇÃO", pena: 100, multa: 120000, fianca: "⛔" },
-            { art: 56, desc: "LAVAGEM DE DINHEIRO", pena: 100, multa: 90000, fianca: "⛔" },
-            { art: 57, desc: "OBSTRUÇÃO DE JUSTIÇA", pena: 100, multa: 90000, fianca: "⛔" },
-            { art: 58, desc: "FALSO TESTEMUNHO OU FALSA PERÍCIA", pena: 0, multa: 1600000, fianca: "⛔" },
-            { art: 59, desc: "INTERFERÊNCIA EM OCORRÊNCIA POLICIAL", pena: 50, multa: 50000, fianca: "⛔" },
-            { art: 60, desc: "FRAUDE PROCESSUAL", pena: 100, multa: 90000, fianca: "⛔" },
-            { art: 61, desc: "DENUNCIAÇÃO CALUNIOSA", pena: 100, multa: 90000, fianca: "⛔" },
-            { art: 62, desc: "PECULATO", pena: 100, multa: 90000, fianca: "⛔" },
-            { art: 63, desc: "CONCUSSÃO", pena: 100, multa: 90000, fianca: "⛔" },
-            { art: 64, desc: "POSSE ILEGAL DE ARMA CURTA", pena: 75, multa: 90000, fianca: "⛔" },
-            { art: 65, desc: "POSSE ILEGAL DE ARMA LONGA", pena: 100, multa: 120000, fianca: "⛔" },
-            { art: 66, desc: "POSSE ILEGA DE MUNIÇÃO (-100)", pena: 30, multa: 30000, fianca: 30000 },
-            { art: 67, desc: "POSSE ILEGAL DE GATILHOS DE ARMA (200+)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 68, desc: "POSSE ILEGAL DE MOLAS DE ARMA (200+)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 69, desc: "POSSE DE PEÇAS DE ARMAS (200+)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 70, desc: "POSSE DE CAPSULAS DE ARMA (200+)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 71, desc: "POSSE DE ETIQUETAS (100+)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 72, desc: "POSSE DE COMPONENTES DE NARCÓTICOS (100+) OU COMPONENTES EXPLOSIVOS", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 73, desc: "POSSE DE PÓLVORA (100+)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 74, desc: "POSSE DE ALVEJANTE (50+)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 75, desc: "POSSE DE LOCKPICK (2+)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 76, desc: "POSSE DE TICKETS (20+)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 77, desc: "POSSE DE DINHEIRO SUJO (ATÉ 100K)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 78, desc: "POSSE DE DINHEIRO SUJO (ATÉ 200K)", pena: 50, multa: 60000, fianca: 60000 },
-            { art: 79, desc: "POSSE DE DINHEIRO SUJO (ACIMA DE 250K)", pena: 75, multa: 120000, fianca: 120000 },
-            { art: 80, desc: "DANO AO PATRIMÔNIO PÚBLICO", pena: 0, multa: 30000, fianca: "⛔" },
-            { art: 81, desc: "FURTO", pena: 30, multa: 30000, fianca: 30000 },
-            { art: 82, desc: "ROUBO", pena: 50, multa: 60000, fianca: 60000 },
-            { art: 83, desc: "RECEPTAÇÃO", pena: 50, multa: 60000, fianca: 60000 },
-            { art: 84, desc: "INVASÃO DE PROPRIEDADE PRIVADA", pena: 50, multa: 60000, fianca: 60000 },
-            { art: 85, desc: "DESMANCHE DE VEÍCULOS", pena: 50, multa: 30000, fianca: 30000 },
-            { art: 86, desc: "TENTATIVA DE FURTO", pena: 30, multa: 30000, fianca: 30000 },
-            { art: 87, desc: "SONEGAÇÃO FISCAL", pena: 100, multa: 85000, fianca: "⛔" },
-            { art: 88, desc: "TENTATIVA DE SUBORNO", pena: 30, multa: 30000, fianca: 30000 },
-            { art: 89, desc: "EXTORSÃO", pena: 50, multa: 60000, fianca: "⛔" },
-            { art: 90, desc: "ESTELIONATO", pena: 75, multa: 60000, fianca: "⛔" },
-            { art: 91, desc: "CRIMES CONTRA O CASAMENTO", pena: 50, multa: 90000, fianca: 90000 },
-            { art: 92, desc: "CRIME CONTRA O ESTADO DE FILIAÇÃO", pena: 50, multa: 60000, fianca: 60000 },
-            { art: 93, desc: "ABANDONO DE INCAPAZ", pena: 75, multa: 60000, fianca: "⛔" },
-            { art: 94, desc: "SUBTRAÇÃO DE INCAPAZ", pena: 75, multa: 60000, fianca: "⛔" },
-            { art: 95, desc: "TRÁFICO DE DROGAS (30+)", pena: 100, multa: 90000, fianca: "⛔" },
-            { art: 96, desc: "USUÁRIO DE DROGAS (-30)", pena: 30, multa: 60000, fianca: 60000 },
-            { art: 97, desc: "TRÁFICO DE MUNIÇÃO (100+)", pena: 100, multa: 90000, fianca: "⛔" },
-            { art: 98, desc: "TRÁFICO DE ARMAMENTO (VENDA)", pena: 100, multa: 60000, fianca: "⛔" }
+            { art: 1, desc: "HOMICÍDIO SIMPLES", pena: 100, multa: 97200, fianca: "⛔" },
+            { art: 2, desc: "HOMICÍDIO QUALIFICADO", pena: 150, multa: 129600, fianca: "PERDÃO JUDICIAL" },
+            { art: 3, desc: "HOMICÍDIO CULPOSO", pena: 75, multa: 64800, fianca: "⛔" },
+            { art: 4, desc: "LATROCÍNIO", pena: 150, multa: 162000, fianca: "⛔" },
+            { art: 5, desc: "TENTATIVA DE HOMICÍDIO", pena: 50, multa: 32400, fianca: "⛔" },
+            { art: 6, desc: "AMEAÇAR ALGUÉM", pena: 50, multa: 64800, fianca: "⛔" },
+            { art: 7, desc: "SEQUESTRO / CARCERE PRIVADO", pena: 50, multa: 97200, fianca: "⛔" },
+            { art: 8, desc: "TORTURA", pena: 100, multa: 129600, fianca: "PERDÃO JUDICIAL" },
+            { art: 9, desc: "TERRORISMO", pena: 150, multa: 129600, fianca: "⛔" },
+            { art: 10, desc: "TRÁFICO  POSSE ÓRGÃOS", pena: 150, multa: 129600, fianca: "PERDÃO JUDICIAL" },
+            { art: 11, desc: "PERICITAÇÃO DA VIDA OU DA SAÚDE", pena: 50, multa: 129600, fianca: "⛔" },
+            { art: 12, desc: "CRIME CONTRA O SEGREDO", pena: 150, multa: 129600, fianca: "⛔" },
+            { art: 13, desc: "ATO OBSCENO / ATENTADO AO PUDOR", pena: 100, multa: 129600, fianca: 120000 },
+            { art: 14, desc: "PILOTAR SEM CAPACETE", pena: 0, multa: 81000, fianca: "⛔" },
+            { art: 15, desc: "ESTACIONAR EM LOCAL PROIBIDO", pena: 10, multa: 54000, fianca: 35000 },
+            { art: 16, desc: "UTILIZAR VEÍCULO PUBLICO PARA COMETER CRIMES", pena: 45, multa: 86400, fianca: "⛔" },
+            { art: 17, desc: "TRANSPORTE IRREGULAR DE PASSAGEIROS", pena: 0, multa: 48600, fianca: "⛔" },
+            { art: 18, desc: "DIRIGIR SOB EFEITO", pena: 30, multa: 86400, fianca: 40000 },
+            { art: 19, desc: "ADULTERAÇÃO DE SINAL IDENTIFICADOR DE VEÍCULOS", pena: 35, multa: 91800, fianca: "⛔" },
+            { art: 12, desc: "DIREÇÃO PERIGOSA", pena: 50, multa: 91800, fianca: 24000 },
+            { art: 21, desc: "EXCESSO DE VELOCIDADE", pena: 0, multa: 45360, fianca: "⛔" },
+            { art: 22, desc: "VEÍCULO SEM PLACA", pena: 0, multa: 60480, fianca: "⛔" },
+            { art: 23, desc: "LESÃO CORPORAL CULPOSA NA DIREÇÃO", pena: 30, multa: 75600, fianca: 40000 },
+            { art: 24, desc: "RECUSA À FISCALIZAÇÃO", pena: 20, multa: 45360, fianca: 24000 },
+            { art: 25, desc: "OBSTRUÇÃO DE VIA PÚBLICA", pena: 20, multa: 60480, fianca: 24000 },
+            { art: 26, desc: "VEICULO AVARIADO", pena: 50, multa: 91800, fianca: 24000 },
+            { art: 27, desc: "LESÃO CORPORAL", pena: 50, multa: 32400, fianca: 56000 },
+            { art: 28, desc: "LESÃO CORPORAL GRAVE", pena: 70, multa: 64800, fianca: "⛔" },
+            { art: 29, desc: "LESÃO CORPORAL SEGUIDA DE MORTE", pena: 100, multa: 82080, fianca: "⛔" },
+            { art: 30, desc: "CALÚNIA", pena: 50, multa: 64800, fianca: 40000 },
+            { art: 31, desc: "INJÚRIA", pena: 50, multa: 64800, fianca: 40000 },
+            { art: 32, desc: "DIFAMAÇÃO", pena: 50, multa: 64800, fianca: 40000 },
+            { art: 33, desc: "CRIME CONTRA A INVIOLABILIDADE DO DOMICÍLIO", pena: 50, multa: 64800, fianca: 40000 },
+            { art: 34, desc: "OCULTAÇÃO DA FACE", pena: 0, multa: 21600, fianca: "⛔" },
+            { art: 35, desc: "FALSA COMUNICAÇÃO DE CRIME", pena: 30, multa: 97200, fianca: 80000 },
+            { art: 36, desc: "DESACATO", pena: 75, multa: 64800, fianca: "⛔" },
+            { art: 37, desc: "RESISTÊNCIA A PRISÃO", pena: 75, multa: 64800, fianca: "⛔" },
+            { art: 38, desc: "PERTUBAÇÃO DO SOSSEGO", pena: 0, multa: 64800, fianca: "⛔" },
+            { art: 39, desc: "DESOBEDIÊNCIA A ORDEM POLICIAL", pena: 30, multa: 36460.8, fianca: 24000 },
+            { art: 40, desc: "APOLOGIA AO CRIME", pena: 60, multa: 26784, fianca: "⛔" },
+            { art: 41, desc: "TENTATIVA DE FUGA", pena: 50, multa: 19872, fianca: 40000 },
+            { art: 42, desc: "OMISSÃO DE SOCORRO", pena: 30, multa: 32400, fianca: 24000 },
+            { art: 43, desc: "EXPOSIÇÃO DE ARMA DE FOGO", pena: 50, multa: 129600, fianca: 80000 },
+            { art: 44, desc: "USO ILEGAL DE VESTIMENTA OU ACESSÓRIOS MILITARES", pena: 50, multa: 43200, fianca: 24000 },
+            { art: 45, desc: "EXERCÍCIO ILEGAL DA PROFISSÃO OU ATIVIDADE", pena: 50, multa: 97200, fianca: 80000 },
+            { art: 46, desc: "CUMPLICE", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 47, desc: "ASSOCIAÇÃO CRIMINOSA (3 OU 4 PESSOAS)", pena: 30, multa: 64800, fianca: "⛔" },
+            { art: 48, desc: "FALSIFICAÇÃO DE DOCUMENTO PÚBLICO", pena: 75, multa: 97200, fianca: 80000 },
+            { art: 49, desc: "DAR FUGA A PRESO", pena: 75, multa: 64800, fianca: "⛔" },
+            { art: 50, desc: "CORRIDA ILEGAL", pena: 50, multa: 97200, fianca: 80000 },
+            { art: 51, desc: "ORGANIZAÇÃO CRIMINOSA", pena: 50, multa: 97200, fianca: 80000 },
+            { art: 52, desc: "POSSE DE ALGEMA (+3)", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 53, desc: "NÃO RESPONDER OU COMPARECER A INTIMAÇÃO JUDICIAL", pena: 0, multa: 960000, fianca: "⛔" },
+            { art: 54, desc: "PREVARICAÇÃO / OMISSÃO DE COMUNICAÇÃO DE CRIME", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 55, desc: "RECUSA DE DADOS SOBRE A PRÓPRIA IDENTIDADE", pena: 0, multa: 64800, fianca: "⛔" },
+            { art: 56, desc: "CORRUPÇÃO", pena: 100, multa: 129600, fianca: "⛔" },
+            { art: 57, desc: "LAVAGEM DE DINHEIRO", pena: 100, multa: 97200, fianca: "⛔" },
+            { art: 58, desc: "OBSTRUÇÃO DE JUSTIÇA", pena: 100, multa: 97200, fianca: "⛔" },
+            { art: 59, desc: "FALSO TESTEMUNHO OU FALSA PERÍCIA", pena: 0, multa: 960000, fianca: "⛔" },
+            { art: 60, desc: "INTERFERÊNCIA EM OCORRÊNCIA POLICIAL", pena: 50, multa: 54000, fianca: "⛔" },
+            { art: 61, desc: "FRAUDE PROCESSUAL", pena: 100, multa: 97200, fianca: "⛔" },
+            { art: 62, desc: "DENUNCIAÇÃO CALUNIOSA", pena: 100, multa: 97200, fianca: "⛔" },
+            { art: 63, desc: "PECULATO", pena: 100, multa: 97200, fianca: "⛔" },
+            { art: 64, desc: "CONCUSSÃO", pena: 100, multa: 97200, fianca: "⛔" },
+            { art: 65, desc: "POSSE ILEGAL DE ARMA CURTA", pena: 75, multa: 97200, fianca: "⛔" },
+            { art: 66, desc: "POSSE ILEGAL DE ARMA LONGA", pena: 100, multa: 129600, fianca: "⛔" },
+            { art: 67, desc: "POSSE ILEGA DE MUNIÇÃO (-100)", pena: 30, multa: 32400, fianca: 24000 },
+            { art: 68, desc: "POSSE DE PEÇAS DE ARMAS (200+)", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 69, desc: "POSSE DE COMPONENTES DE NARCÓTICOS (100+)", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 70, desc: "POSSE DE PEÇAS DE MUNICAO (200+)", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 71, desc: "POSSE DE LOCKPICK (2+)", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 72, desc: "POSSE DE TICKETS (20+)", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 73, desc: "POSSE DE DINHEIRO SUJO (ATÉ 100K)", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 74, desc: "POSSE DE DINHEIRO SUJO (ATÉ 250K)", pena: 50, multa: 64800, fianca: 80000 },
+            { art: 75, desc: "POSSE DE DINHEIRO SUJO (ACIMA DE 250K)", pena: 75, multa: 129600, fianca: 120000 },
+            { art: 76, desc: "DANO AO PATRIMÔNIO PÚBLICO", pena: 0, multa: 32400, fianca: "⛔" },
+            { art: 77, desc: "FURTO", pena: 30, multa: 32400, fianca: 24000 },
+            { art: 78, desc: "ROUBO", pena: 50, multa: 64800, fianca: 40000 },
+            { art: 79, desc: "RECEPTAÇÃO", pena: 50, multa: 64800, fianca: 40000 },
+            { art: 80, desc: "INVASÃO DE PROPRIEDADE PRIVADA", pena: 50, multa: 64800, fianca: 40000 },
+            { art: 81, desc: "DESMANCHE DE VEÍCULOS", pena: 50, multa: 32400, fianca: 24000 },
+            { art: 82, desc: "TENTATIVA DE FURTO", pena: 30, multa: 32400, fianca: 24000 },
+            { art: 83, desc: "SONEGAÇÃO FISCAL", pena: 100, multa: 91800, fianca: "⛔" },
+            { art: 84, desc: "TENTATIVA DE SUBORNO", pena: 30, multa: 32400, fianca: 24000 },
+            { art: 85, desc: "EXTORSÃO", pena: 50, multa: 64800, fianca: "⛔" },
+            { art: 86, desc: "ESTELIONATO", pena: 75, multa: 64800, fianca: "⛔" },
+            { art: 87, desc: "CRIMES CONTRA O CASAMENTO", pena: 50, multa: 97200, fianca: 80000 },
+            { art: 88, desc: "CRIME CONTRA O ESTADO DE FILIAÇÃO", pena: 50, multa: 64800, fianca: 40000 },
+            { art: 89, desc: "ABANDONO DE INCAPAZ", pena: 75, multa: 64800, fianca: "⛔" },
+            { art: 90, desc: "SUBTRAÇÃO DE INCAPAZ", pena: 75, multa: 64800, fianca: "⛔" },
+            { art: 91, desc: "TRÁFICO DE DROGAS (30+)", pena: 100, multa: 97200, fianca: "⛔" },
+            { art: 92, desc: "USUÁRIO DE DROGAS (-30)", pena: 30, multa: 64800, fianca: 40000 },
+            { art: 93, desc: "TRÁFICO DE MUNIÇÃO (100+)", pena: 100, multa: 97200, fianca: "⛔" },
+            { art: 94, desc: "TRÁFICO DE ARMAMENTO (VENDA)", pena: 100, multa: 64800, fianca: "⛔" }
         ];
 
         let selectedCrimes = new Set();
 
-        // Elementos DOM
         const crimesContainer = document.getElementById('crimes-container');
         const searchInput = document.getElementById('search-crime');
         const inafiancaveisList = document.getElementById('inafiancaveis-list');
@@ -390,7 +381,6 @@
         const chkHonorarioReduzido = document.getElementById('chk-honorario-reduzido');
         const labelHonorarioFixo = document.getElementById('label-honorario-fixo');
 
-        // Modificadores DOM
         const modMiranda = document.getElementById('mod-miranda');
         const atenuantePrimario = document.getElementById('atenuante-primario');
         const atenuanteColaboracao = document.getElementById('atenuante-colaboracao');
@@ -405,7 +395,6 @@
         const labelTotalAtenuantes = document.getElementById('label-total-atenuantes');
         const labelTotalAgravantes = document.getElementById('label-total-agravantes');
 
-        // Badges e Cálculos
         const badgeTotalCrimes = document.getElementById('badge-total-crimes');
         const badgeTotalPena = document.getElementById('badge-total-pena');
         const calcSubtotalFianca = document.getElementById('calc-subtotal-fianca');
@@ -413,19 +402,16 @@
         const calcMultaTotal = document.getElementById('calc-multa-total');
         const calcTotalGeral = document.getElementById('calc-total-geral');
 
-        // Estado Global para Exportação
         let globalPenaFinal = 0;
         let globalSubtotalFianca = 0;
         let globalHonorarioFinal = 0;
         let globalMultaFinal = 0;
         let globalFiancaFinal = 0;
 
-        // Formatação de Dinheiro
         function formatCurrency(value) {
             return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
         }
 
-        // Renderizar a Lista de Crimes
         function renderCrimes(filterText = '') {
             crimesContainer.innerHTML = '';
             
@@ -472,7 +458,6 @@
             });
         }
 
-        // Alternar Seleção de Crime
         function toggleCrime(artId) {
             if (selectedCrimes.has(artId)) {
                 selectedCrimes.delete(artId);
@@ -483,7 +468,6 @@
             renderCrimes(searchInput.value);
         }
 
-        // Atualizar Cálculos e Painel da Sentença
         function updateCalculations() {
             let totalPenaBase = 0;
             let subtotalFianca = 0;
@@ -506,23 +490,22 @@
                 }
             });
 
-            // --- CÁLCULO DE ATENUANTES ---
+            // --- CÁLCULO DE ATENUANTES DINÂMICAS ---
             let pctAtenuante = 0;
-            if (atenuantePrimario.checked) pctAtenuante += 20;
-            if (atenuanteColaboracao.checked) pctAtenuante += 20;
-            if (atenuanteConfissao.checked) pctAtenuante += 20;
-            if (atenuanteAdvogado.checked) pctAtenuante += 20;
+            if (atenuantePrimario.checked) pctAtenuante += 20;     // Réu Primário: 0.2
+            if (atenuanteColaboracao.checked) pctAtenuante += 10;  // Colaboração: 0.1
+            if (atenuanteConfissao.checked) pctAtenuante += 15;    // Confissão: 0.15
+            if (atenuanteAdvogado.checked) pctAtenuante += 30;     // Advogado Presente: 0.3
             labelTotalAtenuantes.innerText = `-${pctAtenuante}%`;
 
-            // --- CÁLCULO DE AGRAVANTES ---
+            // --- CÁLCULO DE AGRAVANTES DINÂMICAS ---
             let pctAgravante = 0;
-            if (agravanteMascara.checked) pctAgravante += 10;
-            if (agravanteGrupo.checked) pctAgravante += 10;
-            if (agravanteReincidencia.checked) pctAgravante += 10;
-            if (agravanteRefem.checked) pctAgravante += 20;
+            if (agravanteMascara.checked) pctAgravante += 10;      // Máscara: 0.1
+            if (agravanteGrupo.checked) pctAgravante += 5;         // Grupo 2+: 0.05
+            if (agravanteReincidencia.checked) pctAgravante += 15; // Reincidência: 0.15
+            if (agravanteRefem.checked) pctAgravante += 20;        // Uso de Refém: 0.2
             labelTotalAgravantes.innerText = `+${pctAgravante}%`;
 
-            // Aplicação dos modificadores percentuais sobre a pena
             let totalPenaCalculada = totalPenaBase;
             if (totalPenaBase > 0) {
                 const reducao = totalPenaBase * (pctAtenuante / 100);
@@ -531,30 +514,24 @@
             }
             totalPenaCalculada = Math.round(totalPenaCalculada);
 
-            // --- REGRA: FALTOU O AVISO DE MIRANDA ---
             if (modMiranda.checked) {
                 subtotalMultaAcumulada = subtotalMultaAcumulada * 0.7;
             }
 
-            // Configuração dos Honorários Fixos
             const honorarioFixoAtual = chkHonorarioReduzido.checked ? 50000 : 150000;
             labelHonorarioFixo.innerText = formatCurrency(honorarioFixoAtual);
 
-            // Captura de adicionais
             const adicionalDigitado = Math.max(0, parseFloat(inputHonorarioAdicional.value) || 0);
 
-            // Honorários aplicados
             const honorarioAplicado = temFiancavel ? (honorarioFixoAtual + adicionalDigitado) : 0;
             const totalGeralFianca = subtotalFianca + honorarioAplicado;
 
-            // Atribuição para estado global (Exportação)
             globalPenaFinal = totalPenaCalculada;
             globalSubtotalFianca = subtotalFianca;
             globalHonorarioFinal = honorarioAplicado;
             globalMultaFinal = subtotalMultaAcumulada;
             globalFiancaFinal = totalGeralFianca;
 
-            // Atualização visual
             badgeTotalCrimes.innerText = selectedCrimes.size;
             badgeTotalPena.innerText = `${totalPenaCalculada} / 300`;
             
@@ -570,7 +547,6 @@
             }
         }
 
-        // Geração do relatório e cópia em clipboard legível via execCommand
         function copyJudicialReport() {
             if (selectedCrimes.size === 0) {
                 alert("Selecione ao menos um artigo para exportar o relatório.");
@@ -606,16 +582,16 @@
             report += `⚙️ **MODIFICADORES APLICADOS:**\n`;
             
             let atenuantesAtivas = [];
-            if (atenuantePrimario.checked) atenuantesAtivas.push("Réu Primário");
-            if (atenuanteColaboracao.checked) atenuantesAtivas.push("Colaboração");
-            if (atenuanteConfissao.checked) atenuantesAtivas.push("Confissão");
-            if (atenuanteAdvogado.checked) atenuantesAtivas.push("Advogado Presente");
+            if (atenuantePrimario.checked) atenuantesAtivas.push("Réu Primário (-20%)");
+            if (atenuanteColaboracao.checked) atenuantesAtivas.push("Colaboração (-10%)");
+            if (atenuanteConfissao.checked) atenuantesAtivas.push("Confissão (-15%)");
+            if (atenuanteAdvogado.checked) atenuantesAtivas.push("Advogado Presente (-30%)");
             report += `   • Atenuantes: ${atenuantesAtivas.length > 0 ? atenuantesAtivas.join(', ') : 'Nenhuma'}\n`;
 
             let agravantesAtivas = [];
             if (agravanteMascara.checked) agravantesAtivas.push("Uso de Máscara (+10%)");
-            if (agravanteGrupo.checked) agravantesAtivas.push("Grupo 2+ (+10%)");
-            if (agravanteReincidencia.checked) agravantesAtivas.push("Reincidência (+10%)");
+            if (agravanteGrupo.checked) agravantesAtivas.push("Grupo 2+ (+5%)");
+            if (agravanteReincidencia.checked) agravantesAtivas.push("Reincidência (+15%)");
             if (agravanteRefem.checked) agravantesAtivas.push("Uso de Refém (+20%)");
             report += `   • Agravantes: ${agravantesAtivas.length > 0 ? agravantesAtivas.join(', ') : 'Nenhuma'}\n`;
             report += `   • Aviso de Miranda: ${modMiranda.checked ? 'Faltou (-30% Multas)' : 'Lido/Regular'}\n`;
@@ -623,14 +599,17 @@
             report += `--------------------------------------------------\n`;
             report += `📊 **VERDITO FINAL:**\n`;
             report += `   • 🕒 Pena Total: ${globalPenaFinal} meses (Limite referencial: 300m)\n`;
-            report += `   • 💰 Subtotal Fiança dos Crimes: ${formatCurrency(globalSubtotalFianca)}\n`;
-            report += `   • 👔 Honorários Advocatícios: ${formatCurrency(globalHonorarioFinal)}\n`;
-            report += `   • 📉 Multa Total Acumulada: ${formatCurrency(globalMultaFinal)}\n`;
+            report += `   • 💰 Subtotal Fiança dos Crimes: ${formatCurrency(globalSubtotalFianca)}
+`;
+            report += `   • 👔 Honorários Advocatícios: ${formatCurrency(globalHonorarioFinal)}
+`;
+            report += `   • 📉 Multa Total Acumulada: ${formatCurrency(globalMultaFinal)}
+`;
             report += `--------------------------------------------------\n`;
-            report += `💵 **VALOR TOTAL PARA SOLTURA (Fiança):** ${formatCurrency(globalFiancaFinal)}\n`;
+            report += `💵 **VALOR TOTAL PARA SOLTURA (Fiança):** ${formatCurrency(globalFiancaFinal)}
+`;
             report += `--------------------------------------------------\n`;
 
-            // Criação de textarea temporária para compatibilidade de cópia em iframes
             const tempTextArea = document.createElement('textarea');
             tempTextArea.value = report;
             document.body.appendChild(tempTextArea);
@@ -644,7 +623,7 @@
                         btnCopyText.innerText = "Copiar Relatório Tribunal";
                     }, 2500);
                 } else {
-                    alert("Não foi possível copiar automaticamente. Selecione e copie o relatório manual.");
+                    alert("Não foi possível copiar automaticamente.");
                 }
             } catch (err) {
                 alert("Erro ao copiar o relatório.");
@@ -653,7 +632,6 @@
             document.body.removeChild(tempTextArea);
         }
 
-        // Vincular eventos operacionais
         chkHonorarioReduzido.onchange = updateCalculations;
         inputHonorarioAdicional.oninput = updateCalculations;
         modMiranda.onchange = updateCalculations;
