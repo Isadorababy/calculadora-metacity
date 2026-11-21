@@ -196,10 +196,20 @@
 
                     <!-- Bloco de Cálculo de Fiança -->
                     <div class="bg-[#11111b] p-5 rounded-xl border border-[#313244] flex flex-col gap-4 select-none">
-                        <div class="flex justify-between items-center text-sm text-[#a6adc8]">
-                            <span>Soma das Fianças (Crimes Fiançáveis):</span>
-                            <span id="calc-subtotal-fianca" class="font-semibold text-white">R$ 0</span>
+                        <div class="flex flex-col gap-2">
+                            <div class="flex justify-between items-center text-sm text-[#a6adc8]">
+                                <span>Soma das Fianças (Crimes Fiançáveis):</span>
+                                <span id="calc-subtotal-fianca" class="font-semibold text-white">R$ 0</span>
+                            </div>
+                            <!-- Caixa de seleção de pagamento da soma das fianças -->
+                            <label for="chk-fianca-paga" class="flex items-center justify-between bg-[#1e1e2e] px-3 py-2 rounded-lg border border-[#313244] hover:border-[#a6e3a1]/50 cursor-pointer transition-colors">
+                                <span class="text-xs font-medium text-[#a6e3a1] flex items-center gap-1.5">
+                                    <span>💸</span> Fiança Paga (Abater pena e multa dos crimes fiançáveis)
+                                </span>
+                                <input type="checkbox" id="chk-fianca-paga" class="accent-[#a6e3a1] h-4 w-4 cursor-pointer">
+                            </label>
                         </div>
+
                         <div class="flex justify-between items-center text-sm text-[#a6adc8]">
                             <span>Honorários do Advogado (Fixo + Adicional):</span>
                             <span id="calc-advogado" class="font-semibold text-[#cba6f7]">R$ 0</span>
@@ -380,6 +390,7 @@
         const inputHonorarioAdicional = document.getElementById('input-honorario-adicional');
         const chkHonorarioReduzido = document.getElementById('chk-honorario-reduzido');
         const labelHonorarioFixo = document.getElementById('label-honorario-fixo');
+        const chkFiancaPaga = document.getElementById('chk-fianca-paga');
 
         const modMiranda = document.getElementById('mod-miranda');
         const atenuantePrimario = document.getElementById('atenuante-primario');
@@ -474,17 +485,25 @@
             let subtotalMultaAcumulada = 0;
             let temFiancavel = false;
             let htmlInafiancaveis = '';
+            const fiancaFoiPaga = chkFiancaPaga.checked;
 
             selectedCrimes.forEach(artId => {
                 const crime = database.find(c => c.art === artId);
                 if (crime) {
-                    totalPenaBase += crime.pena;
-                    subtotalMultaAcumulada += crime.multa;
-                    
-                    if (typeof crime.fianca === 'number') {
+                    const isFiancavel = typeof crime.fianca === 'number';
+
+                    if (isFiancavel) {
                         subtotalFianca += crime.fianca;
                         temFiancavel = true;
+                        
+                        // Só soma na pena e na multa se o cliente NÃO tiver pago a fiança
+                        if (!fiancaFoiPaga) {
+                            totalPenaBase += crime.pena;
+                            subtotalMultaAcumulada += crime.multa;
+                        }
                     } else {
+                        totalPenaBase += crime.pena;
+                        subtotalMultaAcumulada += crime.multa;
                         htmlInafiancaveis += `<div class="flex justify-between items-center bg-[#251e2e] px-2 py-1 rounded border border-[#f38ba8]/20 text-[#f38ba8]"><span class="truncate text-xs">Art. ${crime.art} - ${crime.desc}</span><span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#f38ba8]/10">${crime.fianca}</span></div>`;
                     }
                 }
@@ -564,7 +583,8 @@
                 const crime = database.find(c => c.art === artId);
                 if (crime) {
                     if (typeof crime.fianca === 'number') {
-                        fiancaveisTexto.push(`   • Art. ${crime.art} - ${crime.desc} (Fiança: ${formatCurrency(crime.fianca)})`);
+                        const statusPago = chkFiancaPaga.checked ? ' [FIANÇA PAGA - PENA E MULTA ABATIDAS]' : '';
+                        fiancaveisTexto.push(`   • Art. ${crime.art} - ${crime.desc} (Fiança: ${formatCurrency(crime.fianca)})${statusPago}`);
                     } else {
                         inafiancaveisTexto.push(`   • Art. ${crime.art} - ${crime.desc} [${crime.fianca}]`);
                     }
@@ -595,19 +615,16 @@
             if (agravanteRefem.checked) agravantesAtivas.push("Uso de Refém (+20%)");
             report += `   • Agravantes: ${agravantesAtivas.length > 0 ? agravantesAtivas.join(', ') : 'Nenhuma'}\n`;
             report += `   • Aviso de Miranda: ${modMiranda.checked ? 'Faltou (-30% Multas)' : 'Lido/Regular'}\n`;
+            report += `   • Status da Fiança: ${chkFiancaPaga.checked ? 'Paga (Penas e multas fiançáveis abatidas)' : 'Não paga'}\n`;
 
             report += `--------------------------------------------------\n`;
             report += `📊 **VERDITO FINAL:**\n`;
             report += `   • 🕒 Pena Total: ${globalPenaFinal} meses (Limite referencial: 300m)\n`;
-            report += `   • 💰 Subtotal Fiança dos Crimes: ${formatCurrency(globalSubtotalFianca)}
-`;
-            report += `   • 👔 Honorários Advocatícios: ${formatCurrency(globalHonorarioFinal)}
-`;
-            report += `   • 📉 Multa Total Acumulada: ${formatCurrency(globalMultaFinal)}
-`;
+            report += `   • 💰 Subtotal Fiança dos Crimes: ${formatCurrency(globalSubtotalFianca)}\n`;
+            report += `   • 👔 Honorários Advocatícios: ${formatCurrency(globalHonorarioFinal)}\n`;
+            report += `   • 📉 Multa Total Acumulada: ${formatCurrency(globalMultaFinal)}\n`;
             report += `--------------------------------------------------\n`;
-            report += `💵 **VALOR TOTAL PARA SOLTURA (Fiança):** ${formatCurrency(globalFiancaFinal)}
-`;
+            report += `💵 **VALOR TOTAL PARA SOLTURA (Fiança):** ${formatCurrency(globalFiancaFinal)}\n`;
             report += `--------------------------------------------------\n`;
 
             const tempTextArea = document.createElement('textarea');
@@ -632,6 +649,7 @@
             document.body.removeChild(tempTextArea);
         }
 
+        chkFiancaPaga.onchange = updateCalculations;
         chkHonorarioReduzido.onchange = updateCalculations;
         inputHonorarioAdicional.oninput = updateCalculations;
         modMiranda.onchange = updateCalculations;
@@ -651,6 +669,7 @@
             selectedCrimes.clear();
             searchInput.value = '';
             inputHonorarioAdicional.value = '0';
+            chkFiancaPaga.checked = false;
             chkHonorarioReduzido.checked = false;
             modMiranda.checked = false;
             atenuantePrimario.checked = false;
